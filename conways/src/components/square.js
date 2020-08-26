@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Square({ details }) {
     if (!details) {
-      return <h3>Working fetching your user&apos;s details...</h3>;
+      return <h3>Working fetching your squarew&apos;s details...</h3>;
     }
   
     return (
@@ -11,8 +11,8 @@ export default function Square({ details }) {
           {
             <div>
               <h2>{details.square}</h2>
-              <img src={details.image} alt="product for sale" />
-              <p>Price: {details.price}</p>
+              <img src={details.image} alt="square image" />
+              <p>Detail: {details.detail}</p>
             </div>
           }
         </div>
