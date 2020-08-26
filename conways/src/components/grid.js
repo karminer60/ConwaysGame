@@ -1,15 +1,19 @@
 import React, {useState, useEffect} from "react";
+import Square from "./square.js";
 
 const numRows = 50;
 const numCols = 50;
 
 export default function Grid() {
-    const [square, setSquare] = useState(initialSquare)
+    const [grid, setGrid] = useState(() => {
         const rows = [];
         for(let i =0; i < numRows; i++){
-            rows.push(Array, from(Array(numCols), () => 0));
+            rows.push(Array.from(Array(numCols), () => 0));
         }
-    toggleOnOff = button => {
+        return rows;
+    });
+    
+    //toggleOnOff = button => {
         // need to create a toggle to turn it off and on
         
         //this.setState({
@@ -24,14 +28,22 @@ export default function Grid() {
             //}
           //})
        // });
-      };
+       
+    //console.log(grid);
 
-    return(
-
-        <div className="squares">
-          {squares.map((square) => {
-            return <Square key={square.id} details={square} />;
-          })}
+    return (
+        <div>{grid.map((rows, i) =>
+            rows.map((col, k) => (
+                <div 
+                key={`${i}-${k}`}
+                style={{
+                    width:25, 
+                    height: 25,
+                    backgroundColor: grid[i][k] ? 'pink' : undefined,
+                    border: 'solid 1px black'
+            }} />
+            ))
+        )}
         </div>
-    )    
+    );
 }
