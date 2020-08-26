@@ -32,7 +32,11 @@ export default function Grid() {
     //console.log(grid);
 
     return (
-        <div>{grid.map((rows, i) =>
+        <div style={{
+            display: 'grid',
+            gridTemplateColumns: `repeat(${numCols}, 25px)`
+        }}>
+            {grid.map((rows, i) =>
             rows.map((col, k) => (
                 <div 
                 key={`${i}-${k}`}
