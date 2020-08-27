@@ -7,11 +7,16 @@ const numCols = 50;
 export default function Grid() {
     const [grid, setGrid] = useState(() => {
         const rows = [];
-        for(let i =0; i < numRows; i++){
+        for(let i = 0; i < numRows; i++){
             rows.push(Array.from(Array(numCols), () => 0));
         }
         return rows;
     });
+
+    const [text, setText] = useState('');
+    
+    const [width, setWidth] = useState(25)
+    const [height, setHeight] = useState(25)
     
     //toggleOnOff = button => {
         // need to create a toggle to turn it off and on
@@ -31,7 +36,49 @@ export default function Grid() {
        
     //console.log(grid);
 
+    function gridFromText(string){
+        //take string and then transform it into a new array of arrays- replace the old array of arrays
+        //need to make it wider than is in text to match width and height
+        for(let i = 0; i < string; i++){
+            setWidth(25)
+            setHeight(25)
+            if(string[i] == 'O'){
+                string[i] = 1    
+            }   
+            else{
+                string[i] = 0
+
+            }
+        }
+
+    }
+    const handleClick = event => {
+        event.preventDefault()
+        setText(event.target.value)
+        
+    }
+
+    const handleChange = evt => {
+        evt.preventDefault()
+        setGrid(gridFromText(text))
+        
+    }
     return (
+        <>
+        <div>
+            <textarea
+            name='gridFormText'
+            type='text'
+            handleChange={handleChange}
+            />    
+            <button onClick={handleClick}/> 
+
+                       
+        </div>   
+                
+     
+        
+        
         <div style={{
             display: 'grid',
             gridTemplateColumns: `repeat(${numCols}, 25px)`
@@ -48,6 +95,11 @@ export default function Grid() {
             }} />
             ))
         )}
+        
         </div>
+        </>
+        
     );
 }
+
+
