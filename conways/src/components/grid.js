@@ -39,9 +39,11 @@ export default function Grid() {
     function gridFromText(string){
         //take string and then transform it into a new array of arrays- replace the old array of arrays
         //need to make it wider than is in text to match width and height
-        for(let i = 0; i < string; i++){
+        line = string(0,)
+        for(let line of lines){
             setWidth(25)
             setHeight(25)
+            line = row
             if(string[i] == 'O'){
                 string[i] = 1    
             }   
